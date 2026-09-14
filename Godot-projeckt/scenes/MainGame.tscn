@@ -1,0 +1,461 @@
+[gd_scene load_steps=3 format=3 uid="uid://bc47a9d24f01"]
+
+[ext_resource type="Script" path="res://scripts/MainGame.gd" id="1_47k8w"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="2_92j4l"]
+
+[node name="MainGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_47k8w")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("2_92j4l")
+
+[node name="TableBackground" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.066667, 0.2, 0.098039, 1)
+
+[node name="TableInnerBorder" type="ReferenceRect" parent="TableBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0.705882, 0.466667, 0.070588, 0.4)
+border_width = 2.0
+editor_only = false
+
+[node name="TopBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 24.0
+offset_top = 16.0
+offset_right = -24.0
+offset_bottom = 46.0
+grow_horizontal = 2
+theme_override_constants/separation = 20
+
+[node name="TitleLabel" type="Label" parent="TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.980392, 0.854902, 0.368627, 1)
+theme_override_font_sizes/font_size = 15
+text = "★ GOLD RUSH DUE ★"
+
+[node name="RoundCounter" type="Label" parent="TopBar"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
+theme_override_font_sizes/font_size = 13
+text = "RUNDE 1"
+
+[node name="Spacer" type="Control" parent="TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="NewGameBtn" type="Button" parent="TopBar"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "↻ NEUES SPIEL"
+
+[node name="TopArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 55.0
+offset_bottom = 210.0
+grow_horizontal = 2
+
+[node name="OpponentHort" type="PanelContainer" parent="TopArea"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 5.0
+offset_right = 170.0
+offset_bottom = 145.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopArea/OpponentHort"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="Label" parent="TopArea/OpponentHort/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🪨"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="TopArea/OpponentHort/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "place
+Holfer"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="TopArea/OpponentHort/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Hort: 0"
+horizontal_alignment = 1
+
+[node name="OpponentStrikesBox" type="HBoxContainer" parent="TopArea"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 60.0
+offset_right = 360.0
+offset_bottom = 95.0
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="TopArea/OpponentStrikesBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "Gegner Strikes:"
+
+[node name="Strike1" type="Label" parent="TopArea/OpponentStrikesBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "○"
+
+[node name="Strike2" type="Label" parent="TopArea/OpponentStrikesBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "○"
+
+[node name="OpponentHand" type="HBoxContainer" parent="TopArea"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -700.0
+offset_top = 5.0
+offset_right = -40.0
+offset_bottom = 145.0
+grow_horizontal = 0
+alignment = 2
+theme_override_constants/separation = 12
+
+[node name="CenterArena" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -340.0
+offset_top = -120.0
+offset_right = 340.0
+offset_bottom = 130.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ClashSlots" type="HBoxContainer" parent="CenterArena"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 150.0
+grow_horizontal = 2
+alignment = 1
+theme_override_constants/separation = 28
+
+[node name="OpponentClashSlot" type="PanelContainer" parent="CenterArena/ClashSlots"]
+custom_minimum_size = Vector2(100, 145)
+layout_mode = 2
+
+[node name="Holder" type="Control" parent="CenterArena/ClashSlots/OpponentClashSlot"]
+layout_mode = 2
+
+[node name="PlaceholderLabel" type="Label" parent="CenterArena/ClashSlots/OpponentClashSlot"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Gegner
+Karte"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DustCloudFX" type="Control" parent="CenterArena/ClashSlots"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="PowLabel" type="Label" parent="CenterArena/ClashSlots/DustCloudFX"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_font_sizes/font_size = 28
+text = "💥
+VS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerClashSlot" type="PanelContainer" parent="CenterArena/ClashSlots"]
+custom_minimum_size = Vector2(100, 145)
+layout_mode = 2
+
+[node name="Holder" type="Control" parent="CenterArena/ClashSlots/PlayerClashSlot"]
+layout_mode = 2
+
+[node name="PlaceholderLabel" type="Label" parent="CenterArena/ClashSlots/PlayerClashSlot"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 12
+text = "Deine
+Karte"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultBanner" type="PanelContainer" parent="CenterArena"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -80.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterArena/ResultBanner"]
+layout_mode = 2
+alignment = 1
+
+[node name="ResultTitle" type="Label" parent="CenterArena/ResultBanner/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.85, 0.2, 1)
+theme_override_font_sizes/font_size = 13
+text = "DUELL ERGEBNIS"
+horizontal_alignment = 1
+
+[node name="ResultDesc" type="Label" parent="CenterArena/ResultBanner/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/font_size = 11
+text = "Schere schlägt Papier!"
+horizontal_alignment = 1
+
+[node name="NextRoundBtn" type="Button" parent="CenterArena"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -20.0
+offset_right = 110.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 13
+text = "NÄCHSTE RUNDE ▶"
+
+[node name="BottomArea" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -225.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayerHand" type="HBoxContainer" parent="BottomArea"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 5.0
+offset_right = 720.0
+offset_bottom = 145.0
+theme_override_constants/separation = 14
+
+[node name="PlayerStrikesBox" type="HBoxContainer" parent="BottomArea"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -20.0
+offset_right = -280.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="BottomArea/PlayerStrikesBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.3, 0.3, 1)
+theme_override_font_sizes/font_size = 12
+text = "Deine Strikes:"
+
+[node name="Strike1" type="Label" parent="BottomArea/PlayerStrikesBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "○"
+
+[node name="Strike2" type="Label" parent="BottomArea/PlayerStrikesBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5, 0.5, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+text = "○"
+
+[node name="PlayerHort" type="PanelContainer" parent="BottomArea"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -68.0
+offset_right = -70.0
+offset_bottom = 68.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BottomArea/PlayerHort"]
+layout_mode = 2
+alignment = 1
+
+[node name="Icon" type="Label" parent="BottomArea/PlayerHort/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "🪨"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="BottomArea/PlayerHort/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.8, 0.4, 1)
+theme_override_font_sizes/font_size = 11
+text = "place
+Holfer"
+horizontal_alignment = 1
+
+[node name="CountLabel" type="Label" parent="BottomArea/PlayerHort/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Hort: 0"
+horizontal_alignment = 1
+
+[node name="RetrieveBtn" type="Button" parent="BottomArea/PlayerHort/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.9, 0.3, 1)
+theme_override_font_sizes/font_size = 10
+text = "HORT NEHMEN"
+
+[node name="BottomHUD" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -58.0
+offset_right = -30.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="TingGoesBtn" type="Button" parent="BottomHUD"]
+custom_minimum_size = Vector2(210, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.7, 0.2, 1)
+theme_override_font_sizes/font_size = 11
+disabled = true
+text = "🔥 THE TING GOES!"
+
+[node name="StatusLabel" type="Label" parent="BottomHUD"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "Wähle eine Karte zum Ausspielen"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayCardBtn" type="Button" parent="BottomHUD"]
+custom_minimum_size = Vector2(220, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+theme_override_font_sizes/font_size = 13
+disabled = true
+text = "⚔ SPIELE KARTE"
+
+[node name="GameOverModal" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.8)
+
+[node name="Panel" type="PanelContainer" parent="GameOverModal"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -140.0
+offset_right = 220.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="GameOverModal/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 14
+alignment = 1
+
+[node name="IconLabel" type="Label" parent="GameOverModal/Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "🏆"
+horizontal_alignment = 1
+
+[node name="TitleLabel" type="Label" parent="GameOverModal/Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "★ DU HAST GEWONNEN! ★"
+horizontal_alignment = 1
+
+[node name="DetailsLabel" type="Label" parent="GameOverModal/Panel/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Details zum Spielausgang..."
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="RestartBtn" type="Button" parent="GameOverModal/Panel/VBox"]
+custom_minimum_size = Vector2(180, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 13
+text = "↻ NOCHMAL SPIELEN"
